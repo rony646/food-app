@@ -66,3 +66,7 @@ export const MenuLine = styled.View<MenuItemProps>`
     elevation: 5;
     border-radius: 5px;
 `
+export const CardsContainer = styled.ScrollView`
+    margin-top: 50px;
+    padding-left: 5%;
+`

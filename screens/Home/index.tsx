@@ -8,66 +8,102 @@ import {
     MenuContainer,
     MenuItem,
     MenuItemText,
-    MenuLine
+    MenuLine,
+    CardsContainer
 } from './styles';
-import { Text, ScrollView, View, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
+import { Text, ScrollView, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import MealCard from '../../components/MealCard/MealCard';
 
 const Home: React.FC = () => {
 
     const [activeLink, setActiveLink] = useState<1 | 2 | 3 | 4>(1);
 
     return(
-        <Container>
-            <TitleText>Delicious food for you</TitleText>
+        <ScrollView>
+            <Container>
+                <TitleText>Delicious food for you</TitleText>
+
+                
+                    <SearchInputContainer >
+                        <Feather 
+                            name="search" 
+                            size={24} 
+                            color="black" 
+                        />
+                        <SearchInput
+                            keyboardAppearance="light"
+                            keyboardType="decimal-pad"
+                            autoCorrect
+                            style={{color: 'red'}}
+                            placeholder="Search" 
+                        />
+                    </SearchInputContainer>
+            
+                <MenuContainer horizontal showsHorizontalScrollIndicator={false} bouncesZoom>
+                    <TouchableWithoutFeedback onPress={() => setActiveLink(1)}>
+                        <MenuItem>
+                            <MenuItemText active={activeLink === 1}>Foods</MenuItemText>
+                            <MenuLine active={activeLink === 1}/>
+                        </MenuItem>
+                    </TouchableWithoutFeedback>
+                
+                <TouchableWithoutFeedback onPress={() => setActiveLink(2)}>
+                        <MenuItem>
+                                <MenuItemText active={activeLink === 2}>Drinks</MenuItemText>
+                                <MenuLine active={activeLink === 2}/>
+                        </MenuItem>
+                </TouchableWithoutFeedback>
+                
+                <TouchableWithoutFeedback onPress={() => setActiveLink(3)}>
+                        <MenuItem>
+                            <MenuItemText active={activeLink === 3}>Snacks</MenuItemText>
+                            <MenuLine active={activeLink === 3}/>
+                        </MenuItem>
+                    </TouchableWithoutFeedback>
+
+                    <TouchableWithoutFeedback onPress={() => setActiveLink(4)}>
+                        <MenuItem>
+                            <MenuItemText active={activeLink === 4}>Sauces</MenuItemText>
+                            <MenuLine active={activeLink === 4}/>
+                        </MenuItem>
+                    </TouchableWithoutFeedback>
+                </MenuContainer>
 
             
-                <SearchInputContainer >
-                    <Feather 
-                        name="search" 
-                        size={24} 
-                        color="black" 
-                    />
-                    <SearchInput
-                        placeholder="Search" 
-                    />
-                </SearchInputContainer>
-           
+                <CardsContainer horizontal showsHorizontalScrollIndicator={false}>
+                    <MealCard>
+                        <Text>testex</Text>
+                    </MealCard>
+
+                    <MealCard>
+                        <Text>testex</Text>
+                    </MealCard>
+
+                    <MealCard>
+                        <Text>testex</Text>
+                    </MealCard>
+
+                    <MealCard>
+                        <Text>testex</Text>
+                    </MealCard>
+
+                    <MealCard>
+                        <Text>testex</Text>
+                    </MealCard>
+
+                    <MealCard>
+                        <Text>testex</Text>
+                    </MealCard>
+                </CardsContainer>
             
-            <MenuContainer horizontal showsHorizontalScrollIndicator={false} bouncesZoom>
-                <TouchableWithoutFeedback onPress={() => setActiveLink(1)}>
-                    <MenuItem>
-                        <MenuItemText active={activeLink === 1}>Foods</MenuItemText>
-                        <MenuLine active={activeLink === 1}/>
-                    </MenuItem>
-                </TouchableWithoutFeedback>
-               
-               <TouchableWithoutFeedback onPress={() => setActiveLink(2)}>
-                    <MenuItem>
-                            <MenuItemText active={activeLink === 2}>Drinks</MenuItemText>
-                            <MenuLine active={activeLink === 2}/>
-                    </MenuItem>
-               </TouchableWithoutFeedback>
-               
-               <TouchableWithoutFeedback onPress={() => setActiveLink(3)}>
-                    <MenuItem>
-                        <MenuItemText active={activeLink === 3}>Snacks</MenuItemText>
-                        <MenuLine active={activeLink === 3}/>
-                    </MenuItem>
-                </TouchableWithoutFeedback>
-
-                <TouchableWithoutFeedback onPress={() => setActiveLink(4)}>
-                    <MenuItem>
-                        <MenuItemText active={activeLink === 4}>Sauces</MenuItemText>
-                        <MenuLine active={activeLink === 4}/>
-                    </MenuItem>
-                </TouchableWithoutFeedback>
-            </MenuContainer>
-
-            <View style={{height: '50%', backgroundColor: 'red'}}><Text>Cards goes here</Text></View>
-            <Text>Navigator here</Text>
-           
-        </Container>
+                
+                <Text>Navigator here</Text>
+            
+            
+            
+            </Container>
+        </ScrollView>
     )
 };
 
