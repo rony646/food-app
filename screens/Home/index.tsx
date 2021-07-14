@@ -11,13 +11,19 @@ import {
     MenuLine,
     CardsContainer
 } from './styles';
-import { Text, ScrollView, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
+import { Text, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import MealCard from '../../components/MealCard/MealCard';
 
 const Home: React.FC = () => {
 
     const [activeLink, setActiveLink] = useState<1 | 2 | 3 | 4>(1);
+
+    const renderMealCard = () => (
+        <MealCard>
+            <Text>teste</Text>
+        </MealCard>
+    );
 
     return(
         <ScrollView>
@@ -95,13 +101,10 @@ const Home: React.FC = () => {
                     <MealCard>
                         <Text>testex</Text>
                     </MealCard>
+
+                    
                 </CardsContainer>
-            
-                
-                <Text>Navigator here</Text>
-            
-            
-            
+    
             </Container>
         </ScrollView>
     )
