@@ -10,21 +10,27 @@ import {
 } from './styles';
 import { TouchableNativeFeedback } from 'react-native';
 
-const MealCard: React.FC = () => {
+interface MealCardProps {
+    title: string;
+    price: number;
+    imageUrl: string;
+}
+
+const MealCard: React.FC<MealCardProps> = ({ title, price, imageUrl }) => {
     return(
         <CardContainer>
             <ImageContainer>
                 <Image
                     source={{
-                        uri: 'https://hostessatheart.com/wp-content/uploads/2018/01/Blackened-Shrimp-1200x900-Landscape-Image-1-1024x768.png',
+                        uri: imageUrl,
                     }}
                 />
             </ImageContainer>
 
             <TouchableNativeFeedback useForeground={true}>
                 <Card>
-                    <Title>Meal Title</Title>
-                    <Price>95.6$</Price>
+                    <Title>{title}</Title>
+                    <Price>{price}$</Price>
                 </Card>
             </TouchableNativeFeedback>
             

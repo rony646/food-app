@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { 
     TitleText, 
@@ -15,14 +15,21 @@ import { Text, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import MealCard from '../../components/MealCard/MealCard';
 
+import { meals } from '../../data/meals';
+import { Meal } from '../../models/meal';
+import { FlatList } from 'react-native-gesture-handler';
+
 const Home: React.FC = () => {
 
     const [activeLink, setActiveLink] = useState<1 | 2 | 3 | 4>(1);
+    const [mealsList, setMealsList] = useState<Array<Meal>>(meals.filter(item => item.category === "food"))
 
-    const renderMealCard = () => (
-        <MealCard>
-            <Text>teste</Text>
-        </MealCard>
+    const renderMealCard = (item: Meal) => (
+        <MealCard 
+            title={item.title}
+            price={item.price}
+            imageUrl={item.imageUrl}
+        />
     );
 
     return(
@@ -30,7 +37,6 @@ const Home: React.FC = () => {
             <Container>
                 <TitleText>Delicious food for you</TitleText>
 
-                
                     <SearchInputContainer >
                         <Feather 
                             name="search" 
@@ -47,28 +53,52 @@ const Home: React.FC = () => {
                     </SearchInputContainer>
             
                 <MenuContainer horizontal showsHorizontalScrollIndicator={false} bouncesZoom>
-                    <TouchableWithoutFeedback onPress={() => setActiveLink(1)}>
+                    <TouchableWithoutFeedback 
+                        onPress={() => {
+                                setActiveLink(1)
+                                setMealsList(meals.filter(item => item.category === "food"))
+                            }
+                        }
+                    >
                         <MenuItem>
                             <MenuItemText active={activeLink === 1}>Foods</MenuItemText>
                             <MenuLine active={activeLink === 1}/>
                         </MenuItem>
                     </TouchableWithoutFeedback>
                 
-                <TouchableWithoutFeedback onPress={() => setActiveLink(2)}>
+                <TouchableWithoutFeedback 
+                    onPress={() => {
+                            setActiveLink(2)
+                            setMealsList(meals.filter(item => item.category === "drinks"))
+                        }
+                    }
+                >
                         <MenuItem>
                                 <MenuItemText active={activeLink === 2}>Drinks</MenuItemText>
                                 <MenuLine active={activeLink === 2}/>
                         </MenuItem>
                 </TouchableWithoutFeedback>
                 
-                <TouchableWithoutFeedback onPress={() => setActiveLink(3)}>
+                <TouchableWithoutFeedback 
+                    onPress={() => {
+                            setActiveLink(3)
+                            setMealsList(meals.filter(item => item.category === "snacks"))
+                        }
+                    }
+                >
                         <MenuItem>
                             <MenuItemText active={activeLink === 3}>Snacks</MenuItemText>
                             <MenuLine active={activeLink === 3}/>
                         </MenuItem>
                     </TouchableWithoutFeedback>
 
-                    <TouchableWithoutFeedback onPress={() => setActiveLink(4)}>
+                    <TouchableWithoutFeedback 
+                        onPress={() => {
+                                setActiveLink(4)
+                                setMealsList(meals.filter(item => item.category === "sauces"))
+                            }
+                        }
+                    >
                         <MenuItem>
                             <MenuItemText active={activeLink === 4}>Sauces</MenuItemText>
                             <MenuLine active={activeLink === 4}/>
@@ -77,33 +107,15 @@ const Home: React.FC = () => {
                 </MenuContainer>
 
             
-                <CardsContainer horizontal showsHorizontalScrollIndicator={false}>
-                    <MealCard>
-                        <Text>testex</Text>
-                    </MealCard>
-
-                    <MealCard>
-                        <Text>testex</Text>
-                    </MealCard>
-
-                    <MealCard>
-                        <Text>testex</Text>
-                    </MealCard>
-
-                    <MealCard>
-                        <Text>testex</Text>
-                    </MealCard>
-
-                    <MealCard>
-                        <Text>testex</Text>
-                    </MealCard>
-
-                    <MealCard>
-                        <Text>testex</Text>
-                    </MealCard>
-
+                <CardsContainer 
+                    data={mealsList} 
+                    renderItem={(item: any) => renderMealCard(item.item)} 
+                    keyExtractor={(item: any) => item.id}
+                    horizontal 
+                    scrollEnabled
+                    showsHorizontalScrollIndicator={false}
                     
-                </CardsContainer>
+                />
     
             </Container>
         </ScrollView>

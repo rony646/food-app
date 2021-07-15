@@ -32,13 +32,15 @@ export const Card = styled.View`
     width: 100%;
     border-radius: 30px;
     overflow: hidden;
+    border: 0.45px solid #FA4A0C;
 
 `
 
 export const Title = styled.Text`
     color: black;
     font-weight: bold;
-    font-size: 23px;
+    font-size: 18px;
+    margin-bottom: 18px;
 `
 
 export const Price = styled.Text`

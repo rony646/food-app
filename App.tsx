@@ -1,11 +1,9 @@
 import React from 'react';
 
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, TouchableNativeFeedback } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { Entypo, MaterialIcons, Ionicons } from '@expo/vector-icons';
+import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 
 import Home from './screens/Home';
 import Favorites from './screens/Favorites';
@@ -15,6 +13,7 @@ import OrdersHistory from './screens/OrdersHistory';
 const Tab = createMaterialBottomTabNavigator()
 
 export default function App() {
+
   return (
    <NavigationContainer>
       <Tab.Navigator
