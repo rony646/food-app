@@ -65,4 +65,28 @@ export const meals = [
         "https://www.brit.co/media-library/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8yMTQ4ODk1OC9vcmlnaW4uanBnIiwiZXhwaXJlc19hdCI6MTYzOTU1MTQ2OH0.5GP_WLXsFMcHguEVa2pG83GXtmKI0Acf1eiUpoAZ0kM/image.jpg",
         "drinks"
     ),
+      new Meal(
+        "9",
+        "Avocado & Tomato Salad", 
+        6.15, 
+        "Avocados love to go brown on us quickly, so this dish is best served straightaway. The lemon will help prolong the browning, but only for so long.",
+        "https://i2.wp.com/asouthernsoul.com/wp-content/uploads/2020/01/avocado-tomato-salad-bowl-plain-best1-610x915.png",
+        "snacks"
+    ),
+    new Meal(
+        "10",
+        "Healthy Pumpkin Muffins", 
+        5.90, 
+        "We might have dubbed these guys healthy, but they sure don't taste like it!",
+        "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-190723-healthy-pumpkin-muffins-0030-landscape-pf-1564578964.jpg",
+        "snacks"
+    ),
+    new Meal(
+        "10",
+        "Bechamel Sauce", 
+        3.90, 
+        "Béchamel is a standard white sauce and one of the five mother sauces of classical cuisine.",
+        "https://www.thespruceeats.com/thmb/pqELd4eG21vvLcXXNN-W8nOSuLI=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cheesy-bechamel-sauce-recipe-335001-step-04-5c18710846e0fb00010bc2a8.jpg",
+        "sauces"
+    ),
 ]
