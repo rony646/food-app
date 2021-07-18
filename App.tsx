@@ -3,14 +3,31 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 
 import Home from './screens/Home';
 import Favorites from './screens/Favorites';
 import UserSettings from './screens/UserSettings';
 import OrdersHistory from './screens/OrdersHistory';
+import SearchScreen from './screens/SearchScreen';
 
-const Tab = createMaterialBottomTabNavigator()
+const Tab = createMaterialBottomTabNavigator();
+
+const HomeStack = createStackNavigator();
+
+function HomeStackScreen() {
+  return(
+    <HomeStack.Navigator 
+      initialRouteName="home"
+      mode="modal"
+      headerMode="none"
+    >
+        <HomeStack.Screen name="home" component={Home}/>
+        <HomeStack.Screen name="search" component={SearchScreen}/>
+    </HomeStack.Navigator>
+  )
+}
 
 export default function App() {
 
@@ -37,7 +54,7 @@ export default function App() {
           <Tab.Screen 
             
               name="Home" 
-              component={Home}
+              component={HomeStackScreen}
               options={{
                 tabBarLabel: "",
                 tabBarIcon: ({focused}) => (

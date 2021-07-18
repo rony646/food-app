@@ -24,7 +24,7 @@ export const Card = styled.View`
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    padding-bottom: 65px;
+    padding-bottom: 30px;
     position: absolute;
     bottom: 0;
     background: #fff;
@@ -34,6 +34,27 @@ export const Card = styled.View`
     overflow: hidden;
     border: 0.45px solid #FA4A0C;
 
+`
+
+export const ButtonContainer = styled.View`
+    /* margin-top: 20px; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #f74a0b;
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    overflow: hidden;
+    elevation: 3
+`
+
+export const ButtonText = styled.Text`
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
 `
 
 export const Title = styled.Text`
@@ -46,7 +67,7 @@ export const Title = styled.Text`
 export const Price = styled.Text`
     font-weight: bold;
     color: #FA4A0C;
-    font-size: 22px;
+    font-size: 30px;
 `
 
 export const Image = styled.Image`

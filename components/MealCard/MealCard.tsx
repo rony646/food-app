@@ -6,9 +6,12 @@ import {
     Card, 
     Title, 
     Price,
-    Image
+    Image,
+    ButtonContainer,
+    ButtonText
 } from './styles';
-import { TouchableNativeFeedback } from 'react-native';
+import { TouchableNativeFeedback, View, Text } from 'react-native';
+import { Entypo } from '@expo/vector-icons'; 
 
 interface MealCardProps {
     title: string;
@@ -27,10 +30,18 @@ const MealCard: React.FC<MealCardProps> = ({ title, price, imageUrl }) => {
                 />
             </ImageContainer>
 
-            <TouchableNativeFeedback useForeground={true}>
+            <TouchableNativeFeedback useForeground>
                 <Card>
                     <Title>{title}</Title>
                     <Price>{price}$</Price>
+                    <View style={{width: '70%', display: 'flex', alignItems: 'center'}}>
+                        <TouchableNativeFeedback useForeground>
+                            <ButtonContainer>
+                                <Entypo name="shopping-cart" size={26} color="#ffff" />
+                                <ButtonText>Add to Cart</ButtonText>
+                            </ButtonContainer>
+                        </TouchableNativeFeedback>
+                    </View>
                 </Card>
             </TouchableNativeFeedback>
             

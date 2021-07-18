@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
+import { StackNavigationProp } from '@react-navigation/stack'
 import { 
     TitleText, 
     SearchInput,
@@ -11,15 +12,20 @@ import {
     MenuLine,
     CardsContainer
 } from './styles';
-import { Text, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { Keyboard, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import MealCard from '../../components/MealCard/MealCard';
 
 import { meals } from '../../data/meals';
 import { Meal } from '../../models/meal';
-import { FlatList } from 'react-native-gesture-handler';
 
-const Home: React.FC = () => {
+type HomeScreenNavigationProp = StackNavigationProp<any>
+
+interface HomeProps {
+    navigation: HomeScreenNavigationProp
+}
+
+const Home: React.FC<HomeProps> = ({ navigation }) => {
 
     const [activeLink, setActiveLink] = useState<1 | 2 | 3 | 4>(1);
     const [mealsList, setMealsList] = useState<Array<Meal>>(meals.filter(item => item.category === "food"))
@@ -36,20 +42,26 @@ const Home: React.FC = () => {
         <ScrollView>
             <Container>
                 <TitleText>Delicious food for you</TitleText>
-
-                    <SearchInputContainer >
+                    
+                    <SearchInputContainer>
                         <Feather 
                             name="search" 
                             size={24} 
                             color="black" 
                         />
+
+                        
                         <SearchInput
                             keyboardAppearance="light"
                             keyboardType="decimal-pad"
                             autoCorrect
                             style={{color: 'red'}}
-                            placeholder="Search" 
+                            placeholder="Search"
+                            showSoftInputOnFocus={false}
+                            onFocus={() =>  navigation.navigate("search")}
                         />
+                        
+                        
                     </SearchInputContainer>
             
                 <MenuContainer horizontal showsHorizontalScrollIndicator={false} bouncesZoom>
