@@ -1,16 +1,17 @@
 import React from 'react';
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Text, TouchableNativeFeedback } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { MaterialIcons, Ionicons } from '@expo/vector-icons';
+import { MaterialIcons, Ionicons, AntDesign } from '@expo/vector-icons';
 
 import Home from './screens/Home';
 import Favorites from './screens/Favorites';
 import UserSettings from './screens/UserSettings';
 import OrdersHistory from './screens/OrdersHistory';
 import SearchScreen from './screens/SearchScreen';
+import CartScreen from './screens/Cart';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -21,10 +22,49 @@ function HomeStackScreen() {
     <HomeStack.Navigator 
       initialRouteName="home"
       mode="modal"
-      headerMode="none"
     >
-        <HomeStack.Screen name="home" component={Home}/>
-        <HomeStack.Screen name="search" component={SearchScreen}/>
+        <HomeStack.Screen 
+          name="home" 
+          component={Home}
+          options={({navigation}) => ({
+            headerTransparent: true,
+            headerStyle: {
+              elevation: 0,
+            },
+            headerTitle:"",
+            headerRight: () => (
+              <View style={{ borderRadius: 50, overflow: 'hidden', marginRight: 30}}>
+              <TouchableNativeFeedback onPress={() => navigation.navigate("cart")}>
+                  <View style={{height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                      <AntDesign name="shoppingcart" size={34} color="#ADADAF" />
+                  </View>
+              </TouchableNativeFeedback>
+              </View>
+            )
+          })}
+        />
+        <HomeStack.Screen 
+          name="search" 
+          component={SearchScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: "#efeeee39",
+              elevation: 0,
+            },
+            headerTitle:"",
+          }}
+        />
+        <HomeStack.Screen 
+          name="cart" 
+          component={CartScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: "#efeeee39",
+              elevation: 0,
+            },
+            headerTitle:"",
+          }}
+        />
     </HomeStack.Navigator>
   )
 }

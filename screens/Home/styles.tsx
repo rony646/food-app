@@ -8,8 +8,8 @@ export const Container = styled.View`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 18%;
     height: 100%;
-    padding-top: 15%;
     width: 100%;
 `
 
