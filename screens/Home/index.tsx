@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 
 import { StackNavigationProp } from '@react-navigation/stack'
 import { 
-    TitleText, 
-    SearchInput,
-    SearchInputContainer, 
+    TitleText,
     Container,
     MenuContainer,
     MenuItem,
@@ -12,9 +10,9 @@ import {
     MenuLine,
     CardsContainer
 } from './styles';
-import { Keyboard, ScrollView, TouchableWithoutFeedback } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { ScrollView, TouchableWithoutFeedback } from 'react-native';
 import MealCard from '../../components/MealCard/MealCard';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 import { meals } from '../../data/meals';
 import { Meal } from '../../models/meal';
@@ -43,26 +41,9 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
             <Container>
                 <TitleText>Delicious food for you</TitleText>
                     
-                    <SearchInputContainer>
-                        <Feather 
-                            name="search" 
-                            size={24} 
-                            color="black" 
-                        />
-
-                        
-                        <SearchInput
-                            keyboardAppearance="light"
-                            keyboardType="decimal-pad"
-                            autoCorrect
-                            style={{color: 'red'}}
-                            placeholder="Search"
-                            showSoftInputOnFocus={false}
-                            onFocus={() =>  navigation.navigate("search")}
-                        />
-                        
-                        
-                    </SearchInputContainer>
+                <SearchBar 
+                    onFocus={() => navigation.navigate("search")}
+                />
             
                 <MenuContainer horizontal showsHorizontalScrollIndicator={false} bouncesZoom>
                     <TouchableWithoutFeedback 
