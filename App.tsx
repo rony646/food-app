@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, View, Text, TouchableNativeFeedback } from 'react-native';
+import { StyleSheet, View, TouchableNativeFeedback } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -33,9 +33,9 @@ function HomeStackScreen() {
             },
             headerTitle:"",
             headerRight: () => (
-              <View style={{ borderRadius: 50, overflow: 'hidden', marginRight: 30}}>
+              <View style={styles.headerRightContainer}>
               <TouchableNativeFeedback onPress={() => navigation.navigate("cart")}>
-                  <View style={{height: 50, width: 50, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                  <View style={styles.headerIconContainer}>
                       <AntDesign name="shoppingcart" size={34} color="#ADADAF" />
                   </View>
               </TouchableNativeFeedback>
@@ -74,21 +74,13 @@ export default function App() {
   return (
    <NavigationContainer>
       <Tab.Navigator
-        
         initialRouteName="home"
         activeColor="#efeeee88"
-        // inactiveColor="green"
         screenOptions={{
           tabBarLabel: "teste"
         }}
         
-        barStyle={{
-          backgroundColor: "#efeeee88",
-          borderColor: "#efeeeeb0",
-          borderWidth: 0,
-          paddingBottom: 0,
-          elevation: 0,
-        }}
+        barStyle={styles.tabBarStyle}
         sceneAnimationEnabled
       >
           <Tab.Screen 
@@ -154,10 +146,23 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#efeeeeb0',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    headerRightContainer: {
+      overflow: 'hidden', 
+      borderRadius: 50,
+      marginRight: 30
+    },
+    headerIconContainer: {
+      display: "flex", 
+      justifyContent: "center", 
+      alignItems: "center",
+      height: 50, 
+      width: 50
+    },
+    tabBarStyle: {
+      backgroundColor: "#efeeee88",
+      borderColor: "#efeeeeb0",
+      borderWidth: 0,
+      paddingBottom: 0,
+      elevation: 0,
+    }
 });
