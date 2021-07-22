@@ -107,7 +107,6 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
                     horizontal 
                     scrollEnabled
                     showsHorizontalScrollIndicator={false}
-                    
                 />
     
             </Container>
