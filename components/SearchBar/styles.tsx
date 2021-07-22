@@ -13,9 +13,9 @@ export const SearchInputContainer = styled.View`
 `
 
 export const SearchInput = styled.TextInput`
-    /* background: red; */
     height: 100%;
     width: 80%;
     padding-left: 10px;
     font-weight: bold;
+    color: #222222ed;
 `

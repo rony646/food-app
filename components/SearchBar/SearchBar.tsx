@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import { SearchInputContainer, SearchInput } from './styles';
 import { Feather } from '@expo/vector-icons';
 
 interface SearchBarProps {
-    onFocus?(): void; 
+    onFocus?(): void;
+    showSofInputOnFocus: boolean;
+    autoFocus?: boolean;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({onFocus = () => console.log("focused")}) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onFocus = () => console.log("focused"), showSofInputOnFocus, autoFocus = false }) => {
+
+    const searchInputRef = useRef<any>()
+
+    useEffect(() => {
+        if(autoFocus) {
+            searchInputRef.current.focus()
+        }
+    }, [])
+
     return(
         <SearchInputContainer>
             <Feather 
@@ -18,11 +29,12 @@ const SearchBar: React.FC<SearchBarProps> = ({onFocus = () => console.log("focus
  
             <SearchInput
                 keyboardAppearance="light"
-                keyboardType="decimal-pad"
+                keyboardType="default"
                 autoCorrect
                 placeholder="Search"
-                showSoftInputOnFocus={false}
+                showSoftInputOnFocus={showSofInputOnFocus}
                 onFocus={onFocus}
+                ref={searchInputRef}
             />    
         </SearchInputContainer>
     )

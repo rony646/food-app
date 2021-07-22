@@ -43,6 +43,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
                     
                 <SearchBar 
                     onFocus={() => navigation.navigate("search")}
+                    showSofInputOnFocus={false}
                 />
             
                 <MenuContainer horizontal showsHorizontalScrollIndicator={false} bouncesZoom>
