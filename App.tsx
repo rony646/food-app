@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, View, TouchableNativeFeedback } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { MaterialIcons, Ionicons, AntDesign } from '@expo/vector-icons';
 
 import Home from './screens/Home';
@@ -21,7 +21,7 @@ function HomeStackScreen() {
   return(
     <HomeStack.Navigator 
       initialRouteName="home"
-      mode="modal"
+      mode="card"
     >
         <HomeStack.Screen 
           name="home" 
@@ -52,7 +52,9 @@ function HomeStackScreen() {
               elevation: 0,
             },
             headerTitle:"",
+            cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS
           }}
+          
         />
         <HomeStack.Screen 
           name="cart" 
@@ -63,6 +65,7 @@ function HomeStackScreen() {
               elevation: 0,
             },
             headerTitle:"",
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
           }}
         />
     </HomeStack.Navigator>
