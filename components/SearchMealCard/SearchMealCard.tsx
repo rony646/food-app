@@ -13,13 +13,13 @@ import {
 import { TouchableNativeFeedback, View, ViewPropTypes } from 'react-native';
 import { Entypo } from '@expo/vector-icons'; 
 
-interface MealCardProps {
+interface SearchMealCardProps {
     title: string;
     price: number;
     imageUrl: string;
 }
 
-const MealCard: React.FC<MealCardProps> = ({ title, price, imageUrl }) => {
+const SearchMealCard: React.FC<SearchMealCardProps> = ({ title, price, imageUrl }) => {
     return(
         <CardContainer>
             <ImageContainer>
@@ -37,7 +37,7 @@ const MealCard: React.FC<MealCardProps> = ({ title, price, imageUrl }) => {
                     <View style={{width: '70%', display: 'flex', alignItems: 'center'}}>
                         <TouchableNativeFeedback useForeground>
                             <ButtonContainer>
-                                <Entypo name="shopping-cart" size={26} color="#ffff" />
+                                <Entypo name="shopping-cart" size={20} color="#ffff" />
                                 <ButtonText>Add to Cart</ButtonText>
                             </ButtonContainer>
                         </TouchableNativeFeedback>
@@ -50,4 +50,4 @@ const MealCard: React.FC<MealCardProps> = ({ title, price, imageUrl }) => {
     )
 };
 
-export default MealCard;
+export default SearchMealCard;

@@ -7,9 +7,10 @@ interface SearchBarProps {
     onFocus?(): void;
     showSofInputOnFocus: boolean;
     autoFocus?: boolean;
+    onChange?: (value: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onFocus = () => console.log("focused"), showSofInputOnFocus, autoFocus = false }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onFocus = () => console.log("focused"), showSofInputOnFocus, autoFocus = false, onChange = (value) => console.log(value) }) => {
 
     const searchInputRef = useRef<any>()
 
@@ -34,6 +35,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onFocus = () => console.log("focu
                 placeholder="Search"
                 showSoftInputOnFocus={showSofInputOnFocus}
                 onFocus={onFocus}
+                onChangeText={(text: string) => onChange(text)}
                 ref={searchInputRef}
             />    
         </SearchInputContainer>
