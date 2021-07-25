@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { StackNavigationProp } from '@react-navigation/stack'
+import { StackNavigationProp } from '@react-navigation/stack';
 import { 
     TitleText,
     Container,
@@ -33,6 +33,8 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
             title={item.title}
             price={item.price}
             imageUrl={item.imageUrl}
+            description={item.description}
+            navigation={navigation}
         />
     );
 

@@ -8,45 +8,60 @@ import {
     Price,
     Image,
     ButtonContainer,
-    ButtonText
+    ButtonText,
 } from './styles';
-import { TouchableNativeFeedback, View, ViewPropTypes } from 'react-native';
-import { Entypo } from '@expo/vector-icons'; 
+import { TouchableNativeFeedback, View, TouchableWithoutFeedback, Alert } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { Entypo } from '@expo/vector-icons';
+
+type HomeScreenNavigationProp = StackNavigationProp<any>
+
+interface HomeProps {
+    navigation: HomeScreenNavigationProp
+}
 
 interface MealCardProps {
     title: string;
     price: number;
+    description: string;
     imageUrl: string;
 }
 
-const MealCard: React.FC<MealCardProps> = ({ title, price, imageUrl }) => {
+const MealCard: React.FC<MealCardProps & HomeProps> = ({ title, price, imageUrl, description, navigation}) => {
     return(
-        <CardContainer>
-            <ImageContainer>
-                <Image
-                    source={{
-                        uri: imageUrl,
-                    }}
-                />
-            </ImageContainer>
+        <TouchableWithoutFeedback>
+            <CardContainer>
+                <ImageContainer>
+                    <Image
+                        source={{
+                            uri: imageUrl,
+                        }}
+                    />
+                </ImageContainer>
 
-            <TouchableNativeFeedback useForeground>
-                <Card>
-                    <Title>{title}</Title>
-                    <Price>{price}$</Price>
-                    <View style={{width: '70%', display: 'flex', alignItems: 'center'}}>
-                        <TouchableNativeFeedback useForeground>
-                            <ButtonContainer>
-                                <Entypo name="shopping-cart" size={26} color="#ffff" />
-                                <ButtonText>Add to Cart</ButtonText>
-                            </ButtonContainer>
-                        </TouchableNativeFeedback>
-                    </View>
-                </Card>
-            </TouchableNativeFeedback>
-            
-        </CardContainer>
-
+                <TouchableNativeFeedback 
+                    useForeground 
+                    onPress={() => navigation.navigate("details", {
+                        mealTitle: title,
+                        mealImageUrl: imageUrl,
+                        mealDescription: description
+                    })}
+                >
+                    <Card>
+                        <Title>{title}</Title>
+                        <Price>{price}$</Price>
+                        <View style={{width: '70%', display: 'flex', alignItems: 'center'}}>
+                            <TouchableNativeFeedback useForeground>
+                                <ButtonContainer>
+                                    <Entypo name="shopping-cart" size={26} color="#ffff" />
+                                    <ButtonText>Add to Cart</ButtonText>
+                                </ButtonContainer>
+                            </TouchableNativeFeedback>
+                        </View>
+                        </Card>
+                </TouchableNativeFeedback>
+            </CardContainer>
+        </TouchableWithoutFeedback>
     )
 };
 

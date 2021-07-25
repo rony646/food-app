@@ -12,6 +12,7 @@ import UserSettings from './screens/UserSettings';
 import OrdersHistory from './screens/OrdersHistory';
 import SearchScreen from './screens/SearchScreen';
 import CartScreen from './screens/Cart';
+import MealDetails from './screens/MealDetails/MealDetails';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -43,6 +44,7 @@ function HomeStackScreen() {
             )
           })}
         />
+
         <HomeStack.Screen 
           name="search" 
           component={SearchScreen}
@@ -56,6 +58,7 @@ function HomeStackScreen() {
           }}
           
         />
+
         <HomeStack.Screen 
           name="cart" 
           component={CartScreen}
@@ -68,6 +71,20 @@ function HomeStackScreen() {
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
           }}
         />
+
+        <HomeStack.Screen
+          name="details"
+          component={MealDetails}
+          options={{
+            headerStyle: {
+              backgroundColor: "#efeeee39",
+              elevation: 0,
+            },
+            headerTitle:"",
+            cardStyleInterpolator: CardStyleInterpolators.forScaleFromCenterAndroid
+          }}
+        />
+
     </HomeStack.Navigator>
   )
 }
