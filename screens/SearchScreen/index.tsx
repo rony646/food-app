@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Container, ResultsList } from './styles';
 import SearchMealCard from '../../components/SearchMealCard/SearchMealCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 // Types
 import { Meal } from '../../models/meal';
@@ -11,7 +12,13 @@ import { Meal } from '../../models/meal';
 // Data
 import { meals } from '../../data/meals';
 
-const SearchScreen: React.FC = () => {
+type SearchScreenNavigationProp = StackNavigationProp<any>
+
+interface SearchProps {
+    navigation: SearchScreenNavigationProp
+}
+
+const SearchScreen: React.FC<SearchProps> = ({ navigation }) => {
 
     const [ filteredMeals, setFilteredMeals ] = useState<Meal[]>(meals);
 
@@ -20,6 +27,8 @@ const SearchScreen: React.FC = () => {
             title={item.title}
             price={item.price}
             imageUrl={item.imageUrl}
+            description={item.description}
+            navigation={navigation}
         />
     );
 

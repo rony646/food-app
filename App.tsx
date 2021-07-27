@@ -41,7 +41,7 @@ function HomeStackScreen() {
                   </View>
               </TouchableNativeFeedback>
               </View>
-            )
+            ),
           })}
         />
 
@@ -54,6 +54,7 @@ function HomeStackScreen() {
               elevation: 0,
             },
             headerTitle:"",
+            headerBackImage: () => <Ionicons name="chevron-back" size={24} color="black" /> ,
             cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS
           }}
           
@@ -68,6 +69,7 @@ function HomeStackScreen() {
               elevation: 0,
             },
             headerTitle:"",
+            headerBackImage: () => <Ionicons name="chevron-back" size={24} color="black" />,
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
           }}
         />
@@ -81,6 +83,7 @@ function HomeStackScreen() {
               elevation: 0,
             },
             headerTitle:"",
+            headerBackImage: () => <Ionicons name="chevron-back" size={24} color="black" />,
             cardStyleInterpolator: CardStyleInterpolators.forScaleFromCenterAndroid
           }}
         />

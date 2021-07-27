@@ -14,10 +14,10 @@ import { TouchableNativeFeedback, View, TouchableWithoutFeedback, Alert } from '
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Entypo } from '@expo/vector-icons';
 
-type HomeScreenNavigationProp = StackNavigationProp<any>
+type MealCardNavigationProp = StackNavigationProp<any>
 
-interface HomeProps {
-    navigation: HomeScreenNavigationProp
+interface MealCardNavigation {
+    navigation: MealCardNavigationProp
 }
 
 interface MealCardProps {
@@ -27,7 +27,7 @@ interface MealCardProps {
     imageUrl: string;
 }
 
-const MealCard: React.FC<MealCardProps & HomeProps> = ({ title, price, imageUrl, description, navigation}) => {
+const MealCard: React.FC<MealCardProps & MealCardNavigation> = ({ title, price, imageUrl, description, navigation}) => {
     return(
         <TouchableWithoutFeedback>
             <CardContainer>
