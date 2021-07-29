@@ -5,6 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import { MaterialIcons, Ionicons, AntDesign } from '@expo/vector-icons';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 import Home from './screens/Home';
 import Favorites from './screens/Favorites';
@@ -95,78 +97,81 @@ function HomeStackScreen() {
 export default function App() {
 
   return (
-   <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName="home"
-        activeColor="#efeeee88"
-        screenOptions={{
-          tabBarLabel: "teste"
-        }}
-        
-        barStyle={styles.tabBarStyle}
-        sceneAnimationEnabled
-      >
-          <Tab.Screen 
-            
-              name="Home" 
-              component={HomeStackScreen}
-              options={{
-                tabBarLabel: "",
-                tabBarIcon: ({focused}) => (
-                  <>
-                     {focused ? 
-                        <Ionicons name="home" size={24} color="#FA4A0C"/> : 
-                        <Ionicons name="home-outline" size={24} color="#ADADAF" />
-                      }
-                  </>
-                )
-              }}
-          />
-          <Tab.Screen 
-              name="Favorites" 
-              component={Favorites}
-              options={{
-                tabBarLabel: "",
-                tabBarIcon: ({focused}) => (
-                  <>
-                     {focused ? 
-                        <MaterialIcons name="favorite" size={24} color="#FA4A0C"/> : 
-                        <MaterialIcons name="favorite-border" size={24} color="#ADADAF" />
-                      }
-                  </>
-                )
-              }}
-          />
-          <Tab.Screen
-              name="User Settings" 
-              component={UserSettings}
-              options={{
-
-                tabBarLabel: "",
-                tabBarIcon: ({focused}) => (
-                  <>
+  <Provider store={store}>
+    <NavigationContainer>
+        <Tab.Navigator
+          initialRouteName="home"
+          activeColor="#efeeee88"
+          screenOptions={{
+            tabBarLabel: "teste"
+          }}
+          
+          barStyle={styles.tabBarStyle}
+          sceneAnimationEnabled
+        >
+            <Tab.Screen 
+              
+                name="Home" 
+                component={HomeStackScreen}
+                options={{
+                  tabBarLabel: "",
+                  tabBarIcon: ({focused}) => (
+                    <>
                       {focused ? 
-                        <MaterialIcons name="person" size={24} color="#FA4A0C" style={{borderRadius: 150}}/> : 
-                        <MaterialIcons name="person-outline" size={24} color="#ADADAF" style={{borderRadius: 150}}/>
-                      }
-                  </>
-                )
-              }}
-          />
-          <Tab.Screen 
-              name="Orders History" 
-              component={OrdersHistory}
-              options={{
-                tabBarLabel: "",
-                tabBarIcon: ({focused}) => (
-                  <MaterialIcons name="history" size={24} color={focused ? "#FA4A0C" : "#ADADAF"}/>
-                )
-              }} 
-          />
-      </Tab.Navigator>
-   </NavigationContainer> 
+                          <Ionicons name="home" size={24} color="#FA4A0C"/> : 
+                          <Ionicons name="home-outline" size={24} color="#ADADAF" />
+                        }
+                    </>
+                  )
+                }}
+            />
+            <Tab.Screen 
+                name="Favorites" 
+                component={Favorites}
+                options={{
+                  tabBarLabel: "",
+                  tabBarIcon: ({focused}) => (
+                    <>
+                      {focused ? 
+                          <MaterialIcons name="favorite" size={24} color="#FA4A0C"/> : 
+                          <MaterialIcons name="favorite-border" size={24} color="#ADADAF" />
+                        }
+                    </>
+                  )
+                }}
+            />
+            <Tab.Screen
+                name="User Settings" 
+                component={UserSettings}
+                options={{
+
+                  tabBarLabel: "",
+                  tabBarIcon: ({focused}) => (
+                    <>
+                        {focused ? 
+                          <MaterialIcons name="person" size={24} color="#FA4A0C" style={{borderRadius: 150}}/> : 
+                          <MaterialIcons name="person-outline" size={24} color="#ADADAF" style={{borderRadius: 150}}/>
+                        }
+                    </>
+                  )
+                }}
+            />
+            <Tab.Screen 
+                name="Orders History" 
+                component={OrdersHistory}
+                options={{
+                  tabBarLabel: "",
+                  tabBarIcon: ({focused}) => (
+                    <MaterialIcons name="history" size={24} color={focused ? "#FA4A0C" : "#ADADAF"}/>
+                  )
+                }} 
+            />
+        </Tab.Navigator>
+    </NavigationContainer>
+   </Provider>
   );
 }
+
 
 const styles = StyleSheet.create({
     headerRightContainer: {
