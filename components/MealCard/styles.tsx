@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
 export const CardContainer = styled.View`
-    height: 370px;
-    width: 230px;
+    height: 350px;
+    width: 210px;
     margin-right: 20px;
     border-radius: 30px;
     overflow: visible;
@@ -11,9 +11,9 @@ export const ImageContainer = styled.View`
     z-index: 2;
     bottom: -10px;
     /* background: #ccc; */
-    height: 170px;
-    width: 170px;
-    border-radius: 170px;
+    height: 155px;
+    width: 155px;
+    border-radius: 155px;
     overflow: hidden;
     margin: 0 auto;
     elevation: 10;

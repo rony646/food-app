@@ -4999,6 +4999,11 @@ react-native-screens@~3.4.0:
   dependencies:
     warn-once "^0.1.0"
 
+react-native-toast-notifications@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-toast-notifications/-/react-native-toast-notifications-3.1.0.tgz#6bda47491470d16bbca3c629f26e5127168dfcb8"
+  integrity sha512-IIvXeJUhCF5iCum0P0en/rl2tz8oJKGqy9rvvzncTaYCBd/xFcLlnf668VRaRfy4Rr7wNDt1FkvFBB3iZd03Lw==
+
 react-native-vector-icons@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-8.1.0.tgz#e8ee2b17bc4d9f636da1c6f67feee8e2a850c3d8"

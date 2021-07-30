@@ -1,4 +1,4 @@
-import { CartState } from '../types/commonTypes';
+import { CartState  } from '../types/commonTypes';
 import { CartActionTypes, ADD_ITEM, REMOVE_ITEM } from '../actions/cartActions';
 
 const initialCartState: CartState = {
@@ -8,8 +8,14 @@ const initialCartState: CartState = {
 export function cartReducer(state: CartState = initialCartState, action: CartActionTypes) : CartState {
     switch (action.type) {
         case ADD_ITEM:
+            // todo: check if the item is already in the cart and update the price
             const updatedCartItems = state.items
-            updatedCartItems.push(action.payload)
+            updatedCartItems.push({
+                title: action.payload.title,
+                price: action.payload.price.toString(),
+                quantity: 1,
+                id: action.payload.id
+            })
             return {
                 ...state,
                 items: updatedCartItems

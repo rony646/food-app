@@ -35,6 +35,7 @@ const Home: React.FC<HomeProps> = ({ navigation }) => {
             imageUrl={item.imageUrl}
             description={item.description}
             navigation={navigation}
+            id={item.id}
         />
     );
 
