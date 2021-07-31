@@ -28,6 +28,7 @@ const SearchScreen: React.FC<SearchProps> = ({ navigation }) => {
             price={item.price}
             imageUrl={item.imageUrl}
             description={item.description}
+            id={item.id}
             navigation={navigation}
         />
     );

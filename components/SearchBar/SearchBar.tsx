@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import { SearchInputContainer, SearchInput } from './styles';
 import { Feather } from '@expo/vector-icons';
 
+
 interface SearchBarProps {
     onFocus?(): void;
     showSofInputOnFocus: boolean;
@@ -12,14 +13,14 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ onFocus = () => console.log("focused"), showSofInputOnFocus, autoFocus = false, onChange = (value) => console.log(value) }) => {
 
-    const searchInputRef = useRef<any>()
-
     useEffect(() => {
         if(autoFocus) {
             searchInputRef.current.focus()
         }
     }, [])
 
+    const searchInputRef = useRef<any>();
+    
     return(
         <SearchInputContainer>
             <Feather 

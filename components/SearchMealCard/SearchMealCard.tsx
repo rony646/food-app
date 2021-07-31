@@ -1,5 +1,11 @@
 import React from 'react';
 
+import { useAppDispatch } from '../../redux/hooks';
+import { useToast } from 'react-native-toast-notifications';
+
+import { meals } from '../../data/meals';
+import { Meal } from '../../models/meal';
+
 import { 
     CardContainer, 
     ImageContainer, 
@@ -26,9 +32,28 @@ interface SearchMealCardProps {
     price: number;
     imageUrl: string;
     description: string;
+    id: string;
 }
 
-const SearchMealCard: React.FC<SearchMealCardProps & MealCardNavigation> = ({ title, price, imageUrl, description ,navigation }) => {
+const SearchMealCard: React.FC<SearchMealCardProps & MealCardNavigation> = ({ title, price, imageUrl, description ,navigation, id }) => {
+
+    const dispatch = useAppDispatch();
+    const toast = useToast();
+    const seletectedItem = meals.find(item => item.id === id)
+
+    if(seletectedItem === undefined) {
+        throw new Error("Meal not found!")
+    }
+
+    const addItemToCart = (item: Meal) => {
+        dispatch({ type: "ADD_ITEM", payload: item})
+        toast.show(
+            "Item was added to the cart!", 
+            { type: "success", placement: "bottom" }
+        )
+    };
+    
+
     return(
         <CardContainer>
             <ImageContainer>
@@ -51,7 +76,7 @@ const SearchMealCard: React.FC<SearchMealCardProps & MealCardNavigation> = ({ ti
                     <Title>{title}</Title>
                     <Price>{price}$</Price>
                     <View style={{width: '70%', display: 'flex', alignItems: 'center'}}>
-                        <TouchableNativeFeedback useForeground>
+                        <TouchableNativeFeedback useForeground onPress={() => addItemToCart(seletectedItem)}>
                             <ButtonContainer>
                                 <Entypo name="shopping-cart" size={20} color="#ffff" />
                                 <ButtonText>Add to Cart</ButtonText>
