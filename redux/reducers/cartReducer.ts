@@ -38,6 +38,7 @@ export function cartReducer(state: CartState = initialCartState, action: CartAct
             const indexOfDeletedItem = state.items.findIndex(item => item.id === action.payload.id)
             const initialPrice = meals.find(meal => meal.id === action.payload.id)?.price
             const price = initialPrice ? initialPrice : 0;
+            let updatedTotal = state.total;
 
             let updatedItems;
             if(state.items[indexOfDeletedItem].quantity >= 1) {
@@ -46,13 +47,18 @@ export function cartReducer(state: CartState = initialCartState, action: CartAct
                 updatedItems = state.items
                 updatedItems[indexOfDeletedItem].quantity =  updatedItems[indexOfDeletedItem].quantity - 1
                 updatedItems[indexOfDeletedItem].price =  updatedItems[indexOfDeletedItem].price - price
+                if(updatedTotal <= 0) {
+                    updatedTotal = 0
+                } else {
+                    updatedTotal = state.total - price
+                }
             } else {
                 updatedItems = state.items.splice(indexOfDeletedItem, 1)
             }
             return {
                 ...state,
                 items: updatedItems,
-                total: state.total - price
+                total: updatedTotal
             }
         default:
             return state

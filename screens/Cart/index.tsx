@@ -29,21 +29,25 @@ const CartScreen: React.FC = () => {
             <View style={{display: "flex", flex: 1, justifyContent: "space-evenly", alignItems: "center"}}>
                 {/* <Text>Cart Screen</Text> */}
                 {cartItems.map((meal: CartItem) => {
-                    return(
-                        <CartShowItem
-                            title={meal.title}
-                            price={meal.price}
-                            quantity={meal.quantity}
-                            id={meal.id}
-                            key={meal.id}
-                        />
-                    )
+                    if(meal.quantity === 0) {
+                        return;
+                    } else {
+                        return(
+                            <CartShowItem
+                                title={meal.title}
+                                price={meal.price}
+                                quantity={meal.quantity}
+                                id={meal.id}
+                                key={meal.id}
+                            />
+                        )
+                    }
                 })}
 
                 <TotalCard>
                     <Text style={{color: "#646464", fontWeight: "bold", fontSize: 21}}>Order Total: </Text>
                     <Text style={{color: "black", fontWeight: "bold", fontSize: 25}}>
-                       {totalItemsPrice}$
+                       {totalItemsPrice.toFixed(2)}$
                     </Text>
                 </TotalCard>
             </View>

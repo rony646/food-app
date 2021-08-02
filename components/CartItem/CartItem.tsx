@@ -55,7 +55,7 @@ const CartItem: React.FC<CartItemProps> = ({ title, price, quantity, id }) => {
                 <InfoContainer>
                     <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                         <InfoTitle>Total Item Price:</InfoTitle>
-                        <InfoText>{price}$</InfoText>
+                        <InfoText>{price.toFixed(2)}$</InfoText>
                     </View>
                 </InfoContainer>
 
@@ -72,7 +72,7 @@ const CartItem: React.FC<CartItemProps> = ({ title, price, quantity, id }) => {
 
                    
                     <View>
-                        <Text style={{fontSize: 32}}>{itemQuant}</Text>
+                        <Text style={{fontSize: 32}}>{quantity}</Text>
                     </View>
 
                     <TouchableNativeFeedback useForeground onPress={removeItemHandler}>
