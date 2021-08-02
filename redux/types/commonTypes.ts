@@ -7,5 +7,6 @@ export type CartItem =  {
 }
 
 export interface CartState {
-    items: CartItem[]
+    items: CartItem[],
+    total: number
 }

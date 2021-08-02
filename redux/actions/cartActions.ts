@@ -12,6 +12,7 @@ interface RemoveItemAction {
     type: typeof REMOVE_ITEM
     payload: {
         id: string
+        price: number
     }
 }
 

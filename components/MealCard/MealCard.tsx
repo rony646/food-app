@@ -48,7 +48,7 @@ const MealCard: React.FC<MealCardProps & MealCardNavigation> = ({ title, price, 
     const addItemToCart = (item: Meal) => {
         dispatch({ type: "ADD_ITEM", payload: item})
         toast.show(
-            "Item was added to the cart!", 
+            `${item.title} was added to the cart.`,
             { type: "success", placement: "bottom" }
         )
     };

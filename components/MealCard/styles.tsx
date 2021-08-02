@@ -11,9 +11,9 @@ export const ImageContainer = styled.View`
     z-index: 2;
     bottom: -10px;
     /* background: #ccc; */
-    height: 155px;
-    width: 155px;
-    border-radius: 155px;
+    height: 145px;
+    width: 145px;
+    border-radius: 145px;
     overflow: hidden;
     margin: 0 auto;
     elevation: 10;
@@ -43,7 +43,7 @@ export const ButtonContainer = styled.View`
     align-items: center;
     justify-content: space-evenly;
     background: #f74a0b;
-    height: 50px;
+    height: 45px;
     width: 100%;
     border-radius: 10px;
     margin-top: 10px;
@@ -60,14 +60,14 @@ export const ButtonText = styled.Text`
 export const Title = styled.Text`
     color: black;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 18px;
 `
 
 export const Price = styled.Text`
     font-weight: bold;
     color: #FA4A0C;
-    font-size: 30px;
+    font-size: 26px;
 `
 
 export const Image = styled.Image`
