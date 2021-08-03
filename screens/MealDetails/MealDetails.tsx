@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useToast } from 'react-native-toast-notifications';
+import { useAppDispatch } from '../../redux/hooks';
 import { 
     Container, 
     ImageContainer, 
@@ -22,7 +24,16 @@ interface MealDetailsProps {
 
 const MealDetails: React.FC<MealDetailsProps> = ({ navigation, route }) => {
 
-    const { mealTitle, mealImageUrl, mealDescription } = route.params
+    const dispatch = useAppDispatch();
+    
+    const toast = useToast();
+
+    const { mealTitle, mealImageUrl, mealDescription, meal } = route.params;
+
+    const addItemToCartHandler = () => {
+        dispatch({type: "ADD_ITEM", payload: meal});
+        toast.show(`${meal.title} was added to cart!`, { type: "success" })
+    }
 
     return(
         <Container>
@@ -36,7 +47,7 @@ const MealDetails: React.FC<MealDetailsProps> = ({ navigation, route }) => {
 
             <Title>{mealTitle}</Title>
             <Description>{mealDescription}</Description>
-            <ButtonContainer useForeground>
+            <ButtonContainer useForeground onPress={addItemToCartHandler}>
                 <Button>
                     <ButtonText>Add to Cart</ButtonText>
                 </Button>

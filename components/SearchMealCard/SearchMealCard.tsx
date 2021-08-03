@@ -53,7 +53,6 @@ const SearchMealCard: React.FC<SearchMealCardProps & MealCardNavigation> = ({ ti
         )
     };
     
-
     return(
         <CardContainer>
             <ImageContainer>
@@ -69,7 +68,8 @@ const SearchMealCard: React.FC<SearchMealCardProps & MealCardNavigation> = ({ ti
                 onPress={() => navigation.navigate("details", {
                     mealTitle: title,
                     mealImageUrl: imageUrl,
-                    mealDescription: description
+                    mealDescription: description,
+                    meal: seletectedItem
                 })}
             >
                 <Card>

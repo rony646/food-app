@@ -69,7 +69,8 @@ const MealCard: React.FC<MealCardProps & MealCardNavigation> = ({ title, price, 
                     onPress={() => navigation.navigate("details", {
                         mealTitle: title,
                         mealImageUrl: imageUrl,
-                        mealDescription: description
+                        mealDescription: description,
+                        meal: seletectedItem
                     })}
                 >
                     <Card>
