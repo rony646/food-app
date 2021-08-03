@@ -127,6 +127,7 @@ export default function App() {
                         )
                       }}
                   />
+                  
                   <Tab.Screen 
                       name="Favorites" 
                       component={Favorites}
@@ -142,6 +143,7 @@ export default function App() {
                         )
                       }}
                   />
+
                   <Tab.Screen
                       name="User Settings" 
                       component={UserSettings}

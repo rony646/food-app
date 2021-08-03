@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 
-import { TotalCard } from './styles';
+import { 
+    TotalCard, 
+    ButtonContainer, 
+    Button, 
+    ButtonText 
+} from './styles';
 import { ScrollView , View, Text } from 'react-native';
 import { useAppSelector } from '../../redux/hooks';
 import { CartItem } from '../../redux/types/commonTypes';
-import { meals } from '../../data/meals';
 
 import CartShowItem from '../../components/CartItem/CartItem';
 const CartScreen: React.FC = () => {
@@ -21,13 +25,10 @@ const CartScreen: React.FC = () => {
             return prevItemPrice + currItemPrice
         })
     }
-   
-    console.log("Total Price of items in cart: ", totalCart)
 
     return(
         <ScrollView>
             <View style={{display: "flex", flex: 1, justifyContent: "space-evenly", alignItems: "center"}}>
-                {/* <Text>Cart Screen</Text> */}
                 {cartItems.map((meal: CartItem) => {
                     if(meal.quantity === 0) {
                         return;
@@ -50,6 +51,14 @@ const CartScreen: React.FC = () => {
                        {totalItemsPrice.toFixed(2)}$
                     </Text>
                 </TotalCard>
+
+                {totalItemsPrice > 0 ? 
+                    <ButtonContainer useForeground>
+                        <Button>
+                            <ButtonText>Finish your Order</ButtonText>
+                        </Button>
+                    </ButtonContainer> : null
+                }
             </View>
         </ScrollView>
     )

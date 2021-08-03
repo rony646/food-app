@@ -42,6 +42,7 @@ const SearchScreen: React.FC<SearchProps> = ({ navigation }) => {
 
     return(
         <Container>
+            
             <SearchBar 
                 showSofInputOnFocus
                 autoFocus
