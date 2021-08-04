@@ -42,7 +42,6 @@ export function cartReducer(state: CartState = initialCartState, action: CartAct
 
             let updatedItems;
             if(state.items[indexOfDeletedItem].quantity >= 1) {
-                console.log("Entrei")
                
                 updatedItems = state.items
                 updatedItems[indexOfDeletedItem].quantity =  updatedItems[indexOfDeletedItem].quantity - 1
