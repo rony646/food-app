@@ -82,8 +82,8 @@ const MealCard: React.FC<MealCardProps & MealCardNavigation> = ({ title, price, 
                                 onPress={() => addItemToCart(seletectedItem)}
                             >
                                 <ButtonContainer>
-                                    <Entypo name="shopping-cart" size={26} color="#ffff" />
                                     <ButtonText>Add to Cart</ButtonText>
+                                    <Entypo name="shopping-cart" size={26} color="#ffff" />
                                 </ButtonContainer>
                             </TouchableNativeFeedback>
                         </View>

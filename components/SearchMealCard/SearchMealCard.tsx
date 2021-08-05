@@ -78,8 +78,8 @@ const SearchMealCard: React.FC<SearchMealCardProps & MealCardNavigation> = ({ ti
                     <View style={{width: '70%', display: 'flex', alignItems: 'center'}}>
                         <TouchableNativeFeedback useForeground onPress={() => addItemToCart(seletectedItem)}>
                             <ButtonContainer>
-                                <Entypo name="shopping-cart" size={20} color="#ffff" />
                                 <ButtonText>Add to Cart</ButtonText>
+                                <Entypo name="shopping-cart" size={20} color="#ffff" />
                             </ButtonContainer>
                         </TouchableNativeFeedback>
                     </View>
